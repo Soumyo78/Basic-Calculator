@@ -14,7 +14,19 @@ def btn_click(number):
 
 
 def btn_clear():
-    entrybox.delete(0, END)  # Deleting values
+    entrybox.delete(0, END)  # Deleting values inside EntryBox
+
+
+def btn_add():
+    first_number = entrybox.get()
+    global f_num
+    f_num = int(first_number)
+    entrybox.delete(0, END)
+
+def btn_eql():
+    second_number = entrybox.get()
+    entrybox.delete(0, END)
+    entrybox.insert(0, f_num + int(second_number))
 
 
 # Creating an EntryBox
@@ -52,8 +64,8 @@ btn_0.grid(row=4, column=0)
 
 # Operator Buttons
 # Creating Buttons
-add_btn = Button(root, text="+", padx=39, pady=20, command=btn_click)
-eql_btn = Button(root, text="=", padx=91, pady=20, command=btn_click)
+add_btn = Button(root, text="+", padx=39, pady=20, command=btn_add)
+eql_btn = Button(root, text="=", padx=91, pady=20, command=btn_eql)
 clr_btn = Button(root, text="Clear", padx=79, pady=20, command=btn_clear)
 
 # Putting Buttons on Screen
