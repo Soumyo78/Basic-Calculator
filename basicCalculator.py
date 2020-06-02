@@ -2,6 +2,7 @@ from tkinter import *
 
 root = Tk()
 root.title("Basic Calculator")
+root.resizable(width=False, height=False)
 root.iconphoto(True, PhotoImage(file="/home/soumyo/PycharmProjects/Basic Calculator/icon.png"))
 
 
