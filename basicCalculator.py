@@ -20,13 +20,64 @@ def btn_clear():
 def btn_add():
     first_number = entrybox.get()
     global f_num
+    global math
+    math = "addition"
     f_num = int(first_number)
     entrybox.delete(0, END)
 
-def btn_eql():
-    second_number = entrybox.get()
+
+def btn_sub():
+    first_number = entrybox.get()
+    global f_num
+    global math
+    math = "subtraction"
+    f_num = int(first_number)
     entrybox.delete(0, END)
-    entrybox.insert(0, f_num + int(second_number))
+
+
+def btn_mul():
+    first_number = entrybox.get()
+    global f_num
+    global math
+    math = "multiplication"
+    f_num = int(first_number)
+    entrybox.delete(0, END)
+
+
+def btn_div():
+    first_number = entrybox.get()
+    global f_num
+    global math
+    math = "division"
+    f_num = int(first_number)
+    entrybox.delete(0, END)
+
+
+def btn_eql():
+    if math == "addition":
+        second_number = entrybox.get()
+        entrybox.delete(0, END)
+        entrybox.insert(0, f_num + int(second_number))
+
+    elif math == "subtraction":
+         second_number = entrybox.get()
+         entrybox.delete(0, END)
+         entrybox.insert(0, f_num - int(second_number))
+
+    elif math == "multiplication":
+         second_number = entrybox.get()
+         entrybox.delete(0, END)
+         entrybox.insert(0, f_num * int(second_number))
+
+    elif math == "division":
+         second_number = entrybox.get()
+         entrybox.delete(0, END)
+
+         if int(second_number) == 0:
+             entrybox.insert(0, "Invalid")
+
+         else:
+             entrybox.insert(0, f_num / int(second_number))
 
 
 # Creating an EntryBox
@@ -65,11 +116,18 @@ btn_0.grid(row=4, column=0)
 # Operator Buttons
 # Creating Buttons
 add_btn = Button(root, text="+", padx=39, pady=20, command=btn_add)
-eql_btn = Button(root, text="=", padx=91, pady=20, command=btn_eql)
+subtract_btn = Button(root, text="-", padx=41, pady=20, command=btn_sub)
+multiply_btn = Button(root, text="*", padx=40, pady=20, command=btn_mul)
+division_btn = Button(root, text="/", padx=41, pady=20, command=btn_div)
+
+eql_btn = Button(root, text="=", padx=90, pady=20, command=btn_eql)
 clr_btn = Button(root, text="Clear", padx=79, pady=20, command=btn_clear)
 
 # Putting Buttons on Screen
 add_btn.grid(row=5, column=0)
+subtract_btn.grid(row=6, column=0)
+multiply_btn.grid(row=6, column=1)
+division_btn.grid(row=6, column=2)
 eql_btn.grid(row=5, column=1, columnspan=2)
 clr_btn.grid(row=4, column=1, columnspan=2)
 
